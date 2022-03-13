@@ -1,10 +1,13 @@
-import './App.css';
+// import './App.css';
+import { Home } from "./Pages/Home"
+import MockApi from "./mock-api"
 
 function App() {
   return (
     <div className="App">
-      <h1>HELLO WORLD</h1>
- 
+     
+      <MockApi/>
+
     </div>
   );
 }
