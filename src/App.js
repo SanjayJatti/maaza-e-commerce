@@ -1,12 +1,12 @@
-// import './App.css';
-import { Home } from "./Pages/Home"
-import MockApi from "./mock-api"
+import './App.css';
+import {Home} from "./Pages/Home"
 
 function App() {
   return (
     <div className="App">
+      <Home/>
      
-      <MockApi/>
+   
 
     </div>
   );
