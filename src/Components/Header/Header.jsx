@@ -1,16 +1,18 @@
 import "../Header/Header.css"
-const Header = () => {
+import { NavLink } from "react-router-dom"
+
+export const Header = () => {
   return (
     <div className="navbar-container">
-      <a href="./index.html" className="nav-link header-title">
+      <NavLink to="/" className="nav-link header-title">
         <h2>Maaza</h2>
-      </a>
+      </NavLink>
 
       <ul className="nav-list nav-items">
         <li className="nav-item">
-          <a className="nav-link" href="#">
-            Products
-          </a>
+         <NavLink to="/products" className="nav-link">
+           <h4>Products</h4>
+          </NavLink>
         </li>
       </ul>
       <div className="search-box-container margin-auto">
@@ -21,30 +23,29 @@ const Header = () => {
             name="search"
             placeholder="Type to search"
           />
-          <a className="search-btn flex-center" href="#">
+         <div className="search-btn flex-center">
             <i className="fas fa-search"></i>
-          </a>
+          </div>
         </div>
       </div>
 
       <ul className="nav-list nav-social-media">
         <li className="nav-item">
-          <a className="nav-link" href="#">
+         <NavLink to="/login" className="nav-link">
             <i className="fas fa-user"></i>
-          </a>
+          </NavLink>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">
+         <NavLink to="/wishlist" className="nav-link">
             <i className="fas fa-heart"></i>
-          </a>
+          </NavLink>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">
+         <NavLink to="/cart" className="nav-link">
             <i className="fas fa-shopping-cart"></i>
-          </a>
+          </NavLink>
         </li>
       </ul>
     </div>
   );
 };
-export { Header };

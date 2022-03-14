@@ -1,0 +1,16 @@
+.hero-section{
+    background-image: url("../../Assets/hero-img.jpg");
+    background-position: center;
+    height: 75vh; 
+    width: 100%;
+    color: var(--off-white);
+}
+.hero-section h1:nth-child(1){
+    background-color: var(--off-white);
+    color: var(--primary-color);
+    border-radius: var(--scale-xxs);
+}
+.card-horizontal{
+    width: 35rem;
+}
+
