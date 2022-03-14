@@ -1,4 +1,5 @@
 // import './App.css';
+import { Home } from "./Pages/Home"
 import MockApi from "./mock-api"
 
 function App() {
