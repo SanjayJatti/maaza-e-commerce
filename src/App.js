@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import { Home } from "./Components/Home/Home.jsx";
 import { ProductsPage } from "./Components/ProductsPage/ProductsPage.jsx"
 import { Wishlist } from "./Components/Wishlist/Wishlist.jsx"
