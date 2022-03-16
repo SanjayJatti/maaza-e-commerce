@@ -7,14 +7,13 @@ export const Header = () => {
       <NavLink to="/" className="nav-link header-title">
         <h2>Maaza</h2>
       </NavLink>
-
-      <ul className="nav-list nav-items">
+      <div className="nav-list nav-items">
         <li className="nav-item">
          <NavLink to="/products" className="nav-link">
-           <h4>Products</h4>
+           <p>Products</p>
           </NavLink>
         </li>
-      </ul>
+      </div>
       <div className="search-box-container margin-auto">
         <div className="search-box flex-center">
           <input
