@@ -1,7 +1,10 @@
 import "../Header/Header.css";
 import { NavLink } from "react-router-dom";
+import { useFilters } from "../../Context/FilterContext";
 
 export const Header = () => {
+  const { dispatch }=useFilters()
+
   return (
     <div className="navbar-container">
       <NavLink to="/" className="nav-link header-title">
@@ -21,6 +24,7 @@ export const Header = () => {
             type="search"
             name="search"
             placeholder="Type to search"
+            onChange={(e) => dispatch({type: "SEARCH", payload: e.target.value.toLowerCase()})}
           />
           <div className="search-btn flex-center">
             <i className="fas fa-search"></i>

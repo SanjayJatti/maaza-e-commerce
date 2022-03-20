@@ -1,0 +1,11 @@
+.main-wrapper{
+    position: relative;
+    left: 20vw;
+    top: 12vh;
+    padding: var(--scale-xl);
+    max-width: 83vw;
+    gap: var(--scale-xl);
+}
+.main-wrapper h4{
+    display: block;
+}
