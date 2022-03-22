@@ -5,7 +5,7 @@
     width: 100%;
     z-index: var(--z-index-xxl);
     background-color: var(--primary-color);
-    height: 8vh;
+    height: 7vh;
 }
 .nav-link{
     color: var(--off-white);
