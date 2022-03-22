@@ -7,6 +7,7 @@ import { Cart } from "./Components/Cart/Cart.jsx"
 import { Login } from "./Components/Authentication/LogIn/Login.jsx"
 import { Signup } from "./Components/Authentication/Signup/Signup.jsx"
 import Mockapi from "./mock-api";
+import { SingleProduct } from "./Components/SingleProductPage/SingleProduct";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductsPage />} />
+        <Route path="/productid" element={<SingleProduct />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
