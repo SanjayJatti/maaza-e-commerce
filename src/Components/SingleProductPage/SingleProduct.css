@@ -1,0 +1,33 @@
+.single-product-wrapper{
+    position: relative;
+    top: 17vh;
+    display: flex;
+    justify-content: center;
+    gap: var(--scale-xxl)
+}
+.product-image{
+    height: 50%;
+    width: 20%;
+}
+
+.product-rating{
+    background-color: var(--success-color);
+    border-radius: 50%;
+    width: 2.4rem;
+    height: 1.3rem;
+    border-radius: 1.3rem;
+    padding: var(--scale-xxs);
+    font-weight:bold;
+    font-size: 1.2rem;
+    color: var(--white);
+    gap: var(--scale-xxs)
+}
+.card-price{
+    margin-left: 0;
+}
+
+.btn{
+    font-size: 1.6rem;
+    padding: 1.2rem 2rem;
+    font-weight: bold;
+}
