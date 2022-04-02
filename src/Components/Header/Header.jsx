@@ -1,9 +1,12 @@
 import "../Header/Header.css";
 import { NavLink } from "react-router-dom";
 import { useFilters } from "../../Context/FilterContext";
+import { useAuth } from "../../Context/AuthContext";
 
 export const Header = () => {
-  const { dispatch }=useFilters()
+  const { dispatch } = useFilters();
+  const { authState, logOutHandler } = useAuth();
+  const { isUserLoggedIn } = authState.userInfo;
 
   return (
     <div className="navbar-container">
@@ -24,7 +27,12 @@ export const Header = () => {
             type="search"
             name="search"
             placeholder="Type to search"
-            onChange={(e) => dispatch({type: "SEARCH", payload: e.target.value.toLowerCase()})}
+            onChange={(e) =>
+              dispatch({
+                type: "SEARCH",
+                payload: e.target.value.toLowerCase(),
+              })
+            }
           />
           <div className="search-btn flex-center">
             <i className="fas fa-search"></i>
@@ -33,11 +41,17 @@ export const Header = () => {
       </div>
 
       <ul className="nav-list nav-social-media">
-        <li className="nav-item">
-          <NavLink to="/login" className="nav-link">
-            <i className="fas fa-user"></i>
-          </NavLink>
-        </li>
+        {!isUserLoggedIn ? (
+          <li className="nav-item">
+            <NavLink to="/login" className="nav-link">
+              <p>LogIn</p>
+            </NavLink>
+          </li>
+        ) : (
+          <li className="nav-item" onClick={ logOutHandler }>
+            <p className="nav-link cursor-pointer">LogOut</p>
+          </li>
+        )}
         <li className="nav-item">
           <NavLink to="/wishlist" className="nav-link">
             <i className="fas fa-heart"></i>
