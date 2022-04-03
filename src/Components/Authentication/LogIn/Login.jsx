@@ -7,6 +7,11 @@ import { useAuth } from "../../../Context/AuthContext";
 const Login = () => {
   const { authState, authDispatch, logInHandler } = useAuth();
   const { error } = authState;
+
+  const guestLogInHandler = ()=>{
+    authDispatch({type: "USER_EMAIL" ,payload:"adarshbalika@gmail.com"});
+    authDispatch({type: "USER_PASSWORD" ,payload:"adarshBalika123"})
+  }
   return (
     <div>
       <Header />
@@ -57,6 +62,9 @@ const Login = () => {
           </div>
           <button type="submit" className="btn btn-primary">
             Log In
+          </button>
+          <button className="btn btn-secondary" onClick={guestLogInHandler}>
+            Guest LogIn
           </button>
           <p className="text-medium">
             Don't have an account?

@@ -22,6 +22,7 @@ const AuthProvider = ({ children }) => {
       isUserLoggedIn: istoken,
     },
     error: "",
+    token: authToken
   });
 
   const { firstName, lastName, email, password, confirmPassword } = authState.userInfo;
