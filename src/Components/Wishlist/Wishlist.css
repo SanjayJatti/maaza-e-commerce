@@ -1,0 +1,5 @@
+.wishlist-wrapper{
+    position: relative;
+    top: 9vh;
+    padding: var(--scale-xl);
+}

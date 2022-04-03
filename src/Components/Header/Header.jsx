@@ -1,12 +1,13 @@
 import "../Header/Header.css";
 import { NavLink } from "react-router-dom";
 import { useFilters } from "../../Context/FilterContext";
-import { useAuth } from "../../Context/AuthContext";
-
+import { useAuth } from "../../Context/AuthContext"
+import { useWishlist } from "../../Context/WishlistContext";
 export const Header = () => {
   const { dispatch } = useFilters();
   const { authState, logOutHandler } = useAuth();
   const { isUserLoggedIn } = authState.userInfo;
+  const { wishlist } = useWishlist()
 
   return (
     <div className="navbar-container">
@@ -48,19 +49,25 @@ export const Header = () => {
             </NavLink>
           </li>
         ) : (
-          <li className="nav-item" onClick={ logOutHandler }>
+          <li className="nav-item" onClick={logOutHandler}>
             <p className="nav-link cursor-pointer">LogOut</p>
           </li>
         )}
         <li className="nav-item">
-          <NavLink to="/wishlist" className="nav-link">
-            <i className="fas fa-heart"></i>
-          </NavLink>
+          <div class="icon-badge-wrapper">
+            <NavLink to="/wishlist" className="nav-link">
+              <i className="fas fa-heart"></i>
+            </NavLink>
+            <span class="icon-badge bg-danger flex-center">{wishlist.length}</span>
+          </div>
         </li>
         <li className="nav-item">
-          <NavLink to="/cart" className="nav-link">
-            <i className="fas fa-shopping-cart"></i>
-          </NavLink>
+          <div class="icon-badge-wrapper">
+            <NavLink to="/cart" className="nav-link">
+              <i className="fas fa-shopping-cart"></i>
+            </NavLink>
+            <span class="icon-badge bg-danger flex-center">0</span>
+          </div>
         </li>
       </ul>
     </div>

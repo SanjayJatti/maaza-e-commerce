@@ -6,6 +6,7 @@ import { FilterProvider } from "./Context/FilterContext.jsx";
 import { makeServer } from "./server";
 import { ProductsProvider } from "./Context/ProductsContext";
 import { AuthProvider } from "./Context/AuthContext";
+import { WishlistProvider } from "./Context/WishlistContext";
 makeServer();
 
 ReactDOM.render(
@@ -13,9 +14,11 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthProvider>
         <ProductsProvider>
-          <FilterProvider>
-            <App />
-          </FilterProvider>
+          <WishlistProvider>
+            <FilterProvider>
+              <App />
+            </FilterProvider>
+          </WishlistProvider>
         </ProductsProvider>
       </AuthProvider>
     </BrowserRouter>
