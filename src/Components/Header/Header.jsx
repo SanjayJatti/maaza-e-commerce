@@ -3,11 +3,14 @@ import { NavLink } from "react-router-dom";
 import { useFilters } from "../../Context/FilterContext";
 import { useAuth } from "../../Context/AuthContext"
 import { useWishlist } from "../../Context/WishlistContext";
+import { useCart } from "../../Context/CartContext";
+
 export const Header = () => {
   const { dispatch } = useFilters();
   const { authState, logOutHandler } = useAuth();
   const { isUserLoggedIn } = authState.userInfo;
   const { wishlist } = useWishlist()
+  const { cart } = useCart();
 
   return (
     <div className="navbar-container">
@@ -54,19 +57,19 @@ export const Header = () => {
           </li>
         )}
         <li className="nav-item">
-          <div class="icon-badge-wrapper">
+          <div className="icon-badge-wrapper">
             <NavLink to="/wishlist" className="nav-link">
               <i className="fas fa-heart"></i>
             </NavLink>
-            <span class="icon-badge bg-danger flex-center">{wishlist.length}</span>
+            <span className="icon-badge bg-danger flex-center">{wishlist.length}</span>
           </div>
         </li>
         <li className="nav-item">
-          <div class="icon-badge-wrapper">
+          <div className="icon-badge-wrapper">
             <NavLink to="/cart" className="nav-link">
               <i className="fas fa-shopping-cart"></i>
             </NavLink>
-            <span class="icon-badge bg-danger flex-center">0</span>
+            <span className="icon-badge bg-danger flex-center">{cart.length}</span>
           </div>
         </li>
       </ul>

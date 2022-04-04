@@ -7,15 +7,12 @@ import { useAuth } from "../../../Context/AuthContext";
 const Login = () => {
   const { authState, authDispatch, logInHandler } = useAuth();
   const { error } = authState;
+  const { firstName, lastName, email, password, confirmPassword } = authState.userInfo;
 
-  const guestLogInHandler = ()=>{
-    authDispatch({type: "USER_EMAIL" ,payload:"adarshbalika@gmail.com"});
-    authDispatch({type: "USER_PASSWORD" ,payload:"adarshBalika123"})
-  }
   return (
     <div>
       <Header />
-      <div className="log-in-wrapper flex-center" onSubmit={logInHandler}>
+      <div className="log-in-wrapper flex-center" onSubmit={(e)=>logInHandler(e,email, password )}>
         <form className="form-container">
           <h1 className="form-title primary">Log In</h1>
           <div className="input-container">
@@ -63,7 +60,7 @@ const Login = () => {
           <button type="submit" className="btn btn-primary">
             Log In
           </button>
-          <button className="btn btn-secondary" onClick={guestLogInHandler}>
+          <button className="btn btn-secondary" onClick={(e) =>logInHandler(e,"adarshbalika@gmail.com","adarshBalika123" )}>
             Guest LogIn
           </button>
           <p className="text-medium">

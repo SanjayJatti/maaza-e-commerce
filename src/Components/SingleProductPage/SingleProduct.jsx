@@ -20,7 +20,7 @@ export const SingleProduct = () => {
             G604 G-Shock ( GST-S110D-1ADR ) Analog-Digital Watch - For Men
           </h4>
           <h4>Analog watch</h4>
-          <div class="product-rating flex-center">
+          <div className="product-rating flex-center">
             5<i className="fas fa-star checked"></i>
           </div>
           <div>
@@ -37,7 +37,7 @@ export const SingleProduct = () => {
             Delivery Available
           </p>
           <p>
-            <i class="fas fa-check-circle font-inherit margin-r-xs"></i>
+            <i className="fas fa-check-circle font-inherit margin-r-xs"></i>
             Currently in stock
           </p>
           <div className="flex-row gap-md margin-t-lg">

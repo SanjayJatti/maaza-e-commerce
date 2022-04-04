@@ -51,12 +51,12 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const logInHandler = async (e) => {
+  const logInHandler = async (e, emailId, passwordId) => {
     e.preventDefault();
     try {
       const response = await axios.post(`/api/auth/login`, {
-        email: email,
-        password: password,
+        email: emailId,
+        password: passwordId,
       });
       localStorage.setItem("token", response.data.encodedToken);
 

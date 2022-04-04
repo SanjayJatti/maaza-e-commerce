@@ -1,21 +1,19 @@
 import React from "react";
 import { useAuth } from "../../Context/AuthContext";
 import { useWishlist } from "../../Context/WishlistContext";
+import { useCart } from "../../Context/CartContext";
 import { useNavigate } from "react-router-dom";
 import {
   deleteWishlistHandler,
   addWishlistHandler,
 } from "../../Utils/WishlistFunc";
-
-export const calculateDiscountedPrice = (originalPrice, discount) => {
-  const discountedPrice = originalPrice * (1 - discount / 100);
-  return discountedPrice;
-};
+import { addToCartHandler } from "../../Utils/CartFunc";
 
 export const ProductCard = ({ product }) => {
   const { authState } = useAuth();
   const { userInfo, token } = authState;
   const { wishlist, setWishlist } = useWishlist();
+  const { cart, setCart } = useCart();
   const navigator = useNavigate();
 
   return (
@@ -32,20 +30,45 @@ export const ProductCard = ({ product }) => {
         </p>
       </div>
       <div className="card-price">
-        <h4>{calculateDiscountedPrice(product.price, product.discount)}</h4>
+        <h4>₹{product.discountedPrice}</h4>
         <h4 className="light strikethrough">₹{product.price}</h4>
         <h5 className="discount">({product.discount}% OFF)</h5>
       </div>
-      <div className="button-container">
-        <button className="btn btn-primary btn-long">Add to Cart</button>
-      </div>
+      {cart.find((item) => item._id === product._id) ? (
+        <div className="button-container">
+          <button
+            className="btn btn-secondary btn-long"
+            onClick={() => navigator("/cart")}
+          >
+            Go to Cart
+          </button>
+        </div>
+      ) : (
+        <div className="button-container">
+          <button
+            className="btn btn-primary btn-long"
+            onClick={() =>
+              userInfo.isUserLoggedIn
+                ? addToCartHandler(product, setCart, token)
+                : navigator("/login")
+            }
+          >
+            Add to Cart
+          </button>
+        </div>
+      )}
 
-      {userInfo.isUserLoggedIn &&
-      wishlist.find((item) => item._id === product._id) ? (
+      {wishlist.find((item) => item._id === product._id) ? (
         <div
           className="btn-absolute"
           onClick={() =>
-            deleteWishlistHandler(product._id, setWishlist, token, navigator)
+            userInfo.isUserLoggedIn
+              ? deleteWishlistHandler(
+                  product._id,
+                  setWishlist,
+                  token
+                )
+              : navigator("/login")
           }
         >
           <i className="fas fa-heart fa-2x text-danger"></i>
