@@ -1,7 +1,7 @@
 .hero-section{
-    /* background-image: url("/public/Assets/hero-img.jpg"); */
+    background-image: url("./Images/hero-img.jpg");
     background-position: center;
-    height: 75vh; 
+    height: 65vh; 
     width: 100%;
     color: var(--off-white);
 }
@@ -10,7 +10,11 @@
     color: var(--primary-color);
     border-radius: var(--scale-xxs);
 }
-.card-horizontal{
-    width: 35rem;
+.category-img{
+    width: 25rem;
+    height: 25rem;
+    object-fit: cover;
 }
-
+.category-card{
+    background-color: var(--light-primary-color);
+}
