@@ -1,14 +1,13 @@
 import "./App.css";
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Home } from "./Components/Home/Home.jsx";
-import { ProductsPage } from "./Components/ProductsPage/ProductsPage.jsx"
-import { Wishlist } from "./Components/Wishlist/Wishlist.jsx"
-import { Cart } from "./Components/Cart/Cart.jsx"
-import { Login } from "./Components/Authentication/LogIn/Login.jsx"
-import { Signup } from "./Components/Authentication/Signup/Signup.jsx"
+import { ProductsPage } from "./Components/ProductsPage/ProductsPage.jsx";
+import { Wishlist } from "./Components/Wishlist/Wishlist.jsx";
+import { Cart } from "./Components/Cart/Cart.jsx";
+import { Login } from "./Components/Authentication/LogIn/Login.jsx";
+import { Signup } from "./Components/Authentication/Signup/Signup.jsx";
 import Mockapi from "./mock-api";
-import { SingleProduct } from "./Components/SingleProductPage/SingleProduct";
-
+import { PrivateRoute } from "./Components/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -16,12 +15,26 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductsPage />} />
-        <Route path="/productid" element={<SingleProduct />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/cart" element={<Cart />} />
+
+        <Route
+          path="/wishlist"
+          element={
+            <PrivateRoute>
+              <Wishlist />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
+              <Cart />
+            </PrivateRoute>
+          }
+        />
         <Route path="/login" element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/mockman' element={<Mockapi />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/mockman" element={<Mockapi />} />
       </Routes>
     </div>
   );
