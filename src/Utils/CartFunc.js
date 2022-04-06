@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const addToCartHandler = async (product, setCart, token, navigator) => {
+const addToCartHandler = async (product, setCart, token) => {
   if (token) {
     try {
       const response = await axios.post(
@@ -18,13 +18,10 @@ const addToCartHandler = async (product, setCart, token, navigator) => {
     } catch (error) {
       console.log(error);
     }
-  } else {
-    navigator("/login");
-  }
+  } 
 };
 
-const deleteCartItemHandler = async (id, setCart, token) => {
-  // console.log(id);
+const deleteCartItemHandler = async (id, setCart) => {
   try {
     const response = await axios.delete(`/api/user/cart/${id}`, {
       headers: {
