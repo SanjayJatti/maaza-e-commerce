@@ -1,27 +1,25 @@
 import axios from "axios";
 
 const addToCartHandler = async (product, setCart, token) => {
-  if (token) {
-    try {
-      const response = await axios.post(
-        "/api/user/cart",
-        {
-          product,
+  try {
+    const response = await axios.post(
+      "/api/user/cart",
+      {
+        product,
+      },
+      {
+        headers: {
+          authorization: token,
         },
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      );
-      setCart(response.data.cart);
-    } catch (error) {
-      console.log(error);
-    }
-  } 
+      }
+    );
+    setCart(response.data.cart);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-const deleteCartItemHandler = async (id, setCart) => {
+const deleteCartItemHandler = async (id, setCart, token) => {
   try {
     const response = await axios.delete(`/api/user/cart/${id}`, {
       headers: {
@@ -35,56 +33,48 @@ const deleteCartItemHandler = async (id, setCart) => {
   }
 };
 
-const increaseCartItem = async (id, setCart, token, navigator) => {
-  console.log(token)
-  if (token) {
-    try {
-      const response = await axios.post(
-        `/api/user/cart/${id}`,
-        {
-          action: {
-            type: "increment",
-          },
+const increaseCartItem = async (id, setCart, token) => {
+  try {
+    const response = await axios.post(
+      `/api/user/cart/${id}`,
+      {
+        action: {
+          type: "increment",
         },
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      );
-      setCart(response.data.cart);
-    } catch (error) {
-      console.log(error);
-    }
-  } else {
-    navigator("/login");
+      },
+      {
+        headers: {
+          authorization: token,
+        },
+      }
+    );
+    setCart(response.data.cart);
+  } catch (error) {
+    console.log(error);
   }
 };
 
-const decreaseCartItem = async (id, setCart, token, navigator) => {
-  if (token) {
-    try {
-      const response = await axios.post(
-        `/api/user/cart/${id}`,
-        {
-          action: {
-            type: "decrement",
-          },
+const decreaseCartItem = async (id, setCart, token) => {
+  try {
+    const response = await axios.post(
+      `/api/user/cart/${id}`,
+      {
+        action: {
+          type: "decrement",
         },
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      );
-      setCart(response.data.cart);
-    } catch (error) {
-      console.log(error);
-    }
-  } else {
-    navigator("/login");
+      },
+      {
+        headers: {
+          authorization: token,
+        },
+      }
+    );
+    setCart(response.data.cart);
+  } catch (error) {
+    console.log(error);
   }
 };
+
 export {
   addToCartHandler,
   deleteCartItemHandler,

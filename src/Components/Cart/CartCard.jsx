@@ -18,9 +18,9 @@ const CartCard = ({ product }) => {
   const { cart, setCart } = useCart();
   const { wishlist, setWishlist } = useWishlist();
   const {
-    authState: { token },
+    authState
   } = useAuth();
-
+const { token } = authState;
   const navigator = useNavigate();
 
   return (
