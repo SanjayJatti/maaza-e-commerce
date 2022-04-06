@@ -46,9 +46,9 @@ const { token } = authState;
             className="btn-decrease margin-l-sm"
             onClick={() => {
               if (product.qty <= 1) {
-                deleteCartItemHandler(product._id, setCart, token, navigator);
+                deleteCartItemHandler(product._id, setCart, token);
               } else {
-                decreaseCartItem(product._id, setCart, token, navigator, null);
+                decreaseCartItem(product._id, setCart, token);
               }
             }}
           >
@@ -58,7 +58,7 @@ const { token } = authState;
           <button
             className="btn-increase"
             onClick={() =>
-              increaseCartItem(product._id, setCart, token, navigator, null)
+              increaseCartItem(product._id, setCart, token)
             }
           >
             +
@@ -95,7 +95,6 @@ const { token } = authState;
               className="btn btn-secondary "
               onClick={() => {
                 addWishlistHandler(product, setWishlist, token, navigator);
-                deleteCartItemHandler(product._id, setCart, token, navigator);
               }}
             >
               Move to Wishlist
