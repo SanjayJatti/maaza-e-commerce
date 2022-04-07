@@ -15,7 +15,6 @@ const AuthProvider = ({ children }) => {
       email: "",
       password: "",
       confirmPassword: "",
-      isUserLoggedIn: istoken,
     },
     error: "",
     token: authToken,

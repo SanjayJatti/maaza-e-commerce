@@ -26,7 +26,6 @@ const deleteCartItemHandler = async (id, setCart, token) => {
         authorization: token,
       },
     });
-    console.log(response);
     setCart(response.data.cart);
   } catch (error) {
     console.log(error);

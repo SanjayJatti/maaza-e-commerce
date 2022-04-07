@@ -8,7 +8,7 @@ import { useCart } from "../../Context/CartContext";
 export const Header = () => {
   const { dispatch } = useFilters();
   const { authState, authDispatch} = useAuth();
-  const { isUserLoggedIn } = authState.userInfo;
+  const { token} = authState;
   const { wishlist } = useWishlist()
   const { cart } = useCart();
   const navigator = useNavigate()
@@ -16,7 +16,8 @@ export const Header = () => {
 const logOutHandler = () => {
   localStorage.removeItem("token");
   authDispatch({
-    type: "IS_USER_LOGGED_IN",
+    type: "AUTH_TOKEN",
+    payload: null,
   });
   navigator("/");
 };
@@ -54,7 +55,7 @@ const logOutHandler = () => {
       </div>
 
       <ul className="nav-list nav-social-media">
-        {!isUserLoggedIn ? (
+        {!token ? (
           <li className="nav-item">
             <NavLink to="/login" className="nav-link">
               <p>LogIn</p>
@@ -70,7 +71,7 @@ const logOutHandler = () => {
             <NavLink to="/wishlist" className="nav-link">
               <i className="fas fa-heart"></i>
             </NavLink>
-            <span className="icon-badge bg-danger flex-center">{wishlist.length}</span>
+            <span className="icon-badge bg-danger flex-center">{token ? wishlist.length : 0}</span>
           </div>
         </li>
         <li className="nav-item">
@@ -78,7 +79,7 @@ const logOutHandler = () => {
             <NavLink to="/cart" className="nav-link">
               <i className="fas fa-shopping-cart"></i>
             </NavLink>
-            <span className="icon-badge bg-danger flex-center">{cart.length}</span>
+            <span className="icon-badge bg-danger flex-center">{token ? cart.length : 0}</span>
           </div>
         </li>
       </ul>

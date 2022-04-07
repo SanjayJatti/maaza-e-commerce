@@ -17,10 +17,8 @@ import "./Cart.css";
 const CartCard = ({ product }) => {
   const { cart, setCart } = useCart();
   const { wishlist, setWishlist } = useWishlist();
-  const {
-    authState
-  } = useAuth();
-const { token } = authState;
+  const { authState } = useAuth();
+  const { token } = authState;
   const navigator = useNavigate();
 
   return (
@@ -57,9 +55,7 @@ const { token } = authState;
           <span className="quantity">{product.qty}</span>
           <button
             className="btn-increase"
-            onClick={() =>
-              increaseCartItem(product._id, setCart, token)
-            }
+            onClick={() => increaseCartItem(product._id, setCart, token)}
           >
             +
           </button>{" "}
@@ -73,33 +69,16 @@ const { token } = authState;
             {" "}
             Remove
           </button>
-
-          {wishlist.find((item) => item._id === product._id) ? (
-            <button
-              id="btn-md"
-              className="btn btn-secondary"
-              onClick={() =>
-                deleteWishlistHandler(
-                  product._id,
-                  setWishlist,
-                  token,
-                  navigator
-                )
-              }
-            >
-              Remove from Wishlist
-            </button>
-          ) : (
-            <button
-              id="btn-md"
-              className="btn btn-secondary "
-              onClick={() => {
-                addWishlistHandler(product, setWishlist, token, navigator);
-              }}
-            >
-              Move to Wishlist
-            </button>
-          )}
+          <button
+            id="btn-md"
+            className="btn btn-secondary "
+            onClick={() => {
+              addWishlistHandler(product, setWishlist, token);
+              deleteCartItemHandler(product._id, setCart, token)
+            }}
+          >
+            Move to Wishlist
+          </button>
         </div>
       </div>
     </div>

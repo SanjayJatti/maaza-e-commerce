@@ -25,7 +25,8 @@ const Signup = () => {
       });
       localStorage.setItem("token", response.data.encodedToken);
       authDispatch({
-        type: "IS_USER_LOGGED_IN",
+        type: "AUTH_TOKEN",
+        payload: response.data.encodedToken,
       });
       navigator("/logIn");
     } catch (error) {

@@ -48,7 +48,7 @@ export const ProductCard = ({ product }) => {
           <button
             className="btn btn-primary btn-long"
             onClick={() =>
-              userInfo.isUserLoggedIn
+              token
                 ? addToCartHandler(product, setCart, token)
                 : navigator("/login")
             }
@@ -61,15 +61,7 @@ export const ProductCard = ({ product }) => {
       {wishlist.find((item) => item._id === product._id) ? (
         <div
           className="btn-absolute"
-          onClick={() =>
-            userInfo.isUserLoggedIn
-              ? deleteWishlistHandler(
-                  product._id,
-                  setWishlist,
-                  token
-                )
-              : navigator("/login")
-          }
+          onClick={() => deleteWishlistHandler(product._id, setWishlist, token)}
         >
           <i className="fas fa-heart fa-2x text-danger"></i>
         </div>
@@ -77,7 +69,9 @@ export const ProductCard = ({ product }) => {
         <div
           className="btn-absolute"
           onClick={() =>
-            addWishlistHandler(product, setWishlist, token, navigator)
+            token
+              ? addWishlistHandler(product, setWishlist, token)
+              : navigator("/login")
           }
         >
           <i className="far fa-heart fa-2x"></i>
