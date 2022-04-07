@@ -1,5 +1,5 @@
 import "../Header/Header.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useFilters } from "../../Context/FilterContext";
 import { useAuth } from "../../Context/AuthContext"
 import { useWishlist } from "../../Context/WishlistContext";
@@ -7,10 +7,19 @@ import { useCart } from "../../Context/CartContext";
 
 export const Header = () => {
   const { dispatch } = useFilters();
-  const { authState, logOutHandler } = useAuth();
+  const { authState, authDispatch} = useAuth();
   const { isUserLoggedIn } = authState.userInfo;
   const { wishlist } = useWishlist()
   const { cart } = useCart();
+  const navigator = useNavigate()
+
+const logOutHandler = () => {
+  localStorage.removeItem("token");
+  authDispatch({
+    type: "IS_USER_LOGGED_IN",
+  });
+  navigator("/");
+};
 
   return (
     <div className="navbar-container">

@@ -1,19 +1,46 @@
 import React from "react";
 import "../Auth.css";
 import { Header } from "../../Header/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../Context/AuthContext";
+import axios from "axios";
 
 const Login = () => {
-  const { authState, authDispatch, logInHandler } = useAuth();
+  const { authState, authDispatch } = useAuth();
   const { error } = authState;
-  const { firstName, lastName, email, password, confirmPassword } = authState.userInfo;
+  const { email, password } = authState.userInfo;
+  const navigator = useNavigate();
+
+  const logInHandler = async (e, emailId, passwordId) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`/api/auth/login`, {
+        email: emailId,
+        password: passwordId,
+      });
+      localStorage.setItem("token", response.data.encodedToken);
+
+      authDispatch({
+        type: "IS_USER_LOGGED_IN",
+      });
+      navigator("/");
+    } catch (error) {
+      console.log(error);
+      authDispatch({
+        type: "AUTH_ERROR",
+        payload: "Invalid email or password",
+      });
+    }
+  };
 
   return (
     <div>
       <Header />
-      <div className="log-in-wrapper flex-center" onSubmit={(e)=>logInHandler(e,email, password )}>
-        <form className="form-container">
+      <div className="log-in-wrapper flex-center">
+        <form
+          className="form-container"
+          onSubmit={(e) => logInHandler(e, email, password)}
+        >
           <h1 className="form-title primary">Log In</h1>
           <div className="input-container">
             <label htmlFor="email">Email*</label>
@@ -52,7 +79,7 @@ const Login = () => {
                 Remember me
               </label>
             </div>
-            <Link to="/login"className="text-medium text-primary">
+            <Link to="/login" className="text-medium text-primary">
               {" "}
               Forget your password?
             </Link>
@@ -60,7 +87,12 @@ const Login = () => {
           <button type="submit" className="btn btn-primary">
             Log In
           </button>
-          <button className="btn btn-secondary" onClick={(e) =>logInHandler(e,"adarshbalika@gmail.com","adarshBalika123" )}>
+          <button
+            className="btn btn-secondary"
+            onClick={(e) =>
+              logInHandler(e, "adarshbalika@gmail.com", "adarshBalika123")
+            }
+          >
             Guest LogIn
           </button>
           <p className="text-medium">
