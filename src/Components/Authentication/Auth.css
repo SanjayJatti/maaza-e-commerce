@@ -1,7 +1,11 @@
 .log-in-wrapper,
 .sign-up-wrapper{
     position: relative;
-    top: 17vh;
+    top: 15vh;
+    height: auto;
+}
+.auth-page{
+    height: 100vh;
 }
 .form-container{
     width: 40rem;

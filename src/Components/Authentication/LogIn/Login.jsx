@@ -35,7 +35,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="auth-page">
       <Header />
       <div className="log-in-wrapper flex-center">
         <form

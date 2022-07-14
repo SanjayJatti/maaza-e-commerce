@@ -22,9 +22,9 @@ export const Filter = () => {
 
   return (
     <div className="filter-wrapper flex-column">
-      <div className="filter-header flex-row margin-b-sm">
+      <div className="filter-title">
         <h4>Filters</h4>
-        <span onClick={() => dispatch({ type: "CLEAR_ALL" })}>Clear</span>
+        <h4 className="text-primary" onClick={() => dispatch({ type: "CLEAR_ALL" })}>Clear</h4>
       </div>
       <div>
         <div className="flex-column gap-xs">

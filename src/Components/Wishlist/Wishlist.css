@@ -1,5 +1,20 @@
 .wishlist-wrapper{
-    position: relative;
+    position: absolute;
     top: 9vh;
     padding: var(--scale-xl);
+    margin: 0 var(--scale-lg);
+    width:92vw
+}
+.wishlist-cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--scale-xl)
+}
+@media only screen and (max-width:580px){
+    .wishlist-wrapper{
+        top: 12vh;
+    }
+    .wishlist-cards{
+        justify-content: center;
+    }
 }
