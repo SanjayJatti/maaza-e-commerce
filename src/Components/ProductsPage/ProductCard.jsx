@@ -11,40 +11,47 @@ import { addToCartHandler } from "../../Utils/CartFunc";
 
 export const ProductCard = ({ product }) => {
   const { authState } = useAuth();
-  const { userInfo, token } = authState;
+  const { token } = authState;
   const { wishlist, setWishlist } = useWishlist();
   const { cart, setCart } = useCart();
   const navigator = useNavigate();
 
   return (
     <div className="card card-vertical">
-      <img className="img-responsive" src={product.image} alt={product.title} />
-      <div className="card-info">
-        <h4>{product.title}</h4>
-        <p>
-          {product.categoryName}{" "}
-          <span className="text-center">
-            {product.rating}
-            <i className="fas fa-star checked"></i>
-          </span>
-        </p>
+      <div onClick={() => navigator(product._id)} className="cursor-pointer">
+        {!product.inStock && (
+          <h2 className="out-of-stock flex-center">OUT OF STOCK</h2>
+        )}
+        <img
+          className="img-responsive"
+          src={product.image}
+          alt={product.title}
+        />
+        <div className="card-info">
+          <h4>{product.title}</h4>
+          <p>
+            {product.categoryName}{" "}
+            <span className="text-center">
+              {product.rating}
+              <i className="fas fa-star checked"></i>
+            </span>
+          </p>
+        </div>
+        <div className="card-price">
+          <h4>₹{product.discountedPrice}</h4>
+          <h4 className="light strikethrough">₹{product.price}</h4>
+          <h5 className="discount">({product.discount}% OFF)</h5>
+        </div>
       </div>
-      <div className="card-price">
-        <h4>₹{product.discountedPrice}</h4>
-        <h4 className="light strikethrough">₹{product.price}</h4>
-        <h5 className="discount">({product.discount}% OFF)</h5>
-      </div>
-      {cart.find((item) => item._id === product._id) ? (
-        <div className="button-container">
+      <div className="button-container">
+        {cart.find((item) => item._id === product._id) ? (
           <button
             className="btn btn-secondary btn-long"
             onClick={() => navigator("/cart")}
           >
             Go to Cart
           </button>
-        </div>
-      ) : (
-        <div className="button-container">
+        ) : product.inStock ? (
           <button
             className="btn btn-primary btn-long"
             onClick={() =>
@@ -55,9 +62,12 @@ export const ProductCard = ({ product }) => {
           >
             Add to Cart
           </button>
-        </div>
-      )}
-
+        ) : (
+          <button disabled className="btn btn-primary btn-long btn-disabled">
+            Add to Cart
+          </button>
+        )}
+      </div>
       {wishlist.find((item) => item._id === product._id) ? (
         <div
           className="btn-absolute"

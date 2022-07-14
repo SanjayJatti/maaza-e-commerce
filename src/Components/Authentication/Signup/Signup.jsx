@@ -39,7 +39,7 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <div className="auth-page">
       <Header />
       <div className="sign-up-wrapper flex-center">
         <form className="form-container" onSubmit={(e) => signUpHandler(e)}>

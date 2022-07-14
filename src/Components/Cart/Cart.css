@@ -1,6 +1,7 @@
 .cart-wrapper{
-    position: relative;
+    position: absolute;
     top: 12vh;
+    width: 100%;
 }
 .cart-main{
     padding: var(--scale-xl);
@@ -41,7 +42,7 @@
 
 @media only screen and (max-width: 950px) {
     .cart-main{
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
     .cart-cards{
     align-items: center;
@@ -55,6 +56,10 @@
     .card-horizontal{
         flex-direction: column;
         width: 20rem;
+    }
+    .price-details{
+        width: 28rem;
+        margin-top: var(--scale-md)
     }
 
 }

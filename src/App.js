@@ -6,8 +6,8 @@ import { Wishlist } from "./Components/Wishlist/Wishlist.jsx";
 import { Cart } from "./Components/Cart/Cart.jsx";
 import { Login } from "./Components/Authentication/LogIn/Login.jsx";
 import { Signup } from "./Components/Authentication/Signup/Signup.jsx";
-import Mockapi from "./mock-api";
 import { PrivateRoute } from "./Components/PrivateRoute/PrivateRoute";
+import { SingleProduct } from "./Components/SingleProductPage/SingleProduct";
 
 function App() {
   return (
@@ -15,7 +15,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductsPage />} />
-
         <Route
           path="/wishlist"
           element={
@@ -32,9 +31,16 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/products/:id"
+          element={
+            <PrivateRoute>
+              <SingleProduct />
+            </PrivateRoute>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/mockman" element={<Mockapi />} />
       </Routes>
     </div>
   );

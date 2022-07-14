@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Header } from "../Header/Header.jsx";
 import { Filter } from "./Filter.jsx";
 import { ProductCard } from "./ProductCard.jsx";
@@ -14,10 +14,11 @@ import {
   brandFilter,
   sortByFilter,
   searchFilter,
-  composeFunction
+  composeFunction,
 } from "../../Utils/FilteredProducts.js";
 
 export const ProductsPage = () => {
+  const [filterDrawer, setFilterDrawer] = useState(false);
   const { state } = useFilters();
   const { productsState } = useProducts();
   const { products } = productsState;
@@ -36,8 +37,10 @@ export const ProductsPage = () => {
   return (
     <div>
       <Header />
-      <Filter />
-      <div className="main-wrapper flex-row flex-wrap">
+      <div className="filter-sidebar">
+        <Filter />
+      </div>
+      <div className="main-wrapper">
         {productsData.length !== 0 ? (
           productsData.map((product) => (
             <ProductCard product={product} key={product.id} />
@@ -45,7 +48,18 @@ export const ProductsPage = () => {
         ) : (
           <h2>No products to display</h2>
         )}
+        <div
+          className="mobile-filters flex-center"
+          onClick={() => setFilterDrawer(!filterDrawer)}
+        >
+          Filters
+        </div>
       </div>
+      {filterDrawer && (
+        <div className="mob-filter-drawer">
+          <Filter />
+        </div>
+      )}
     </div>
   );
 };

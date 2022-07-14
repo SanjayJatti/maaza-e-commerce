@@ -11,7 +11,7 @@ const Wishlist = () => {
       <Header />
       <div className="wishlist-wrapper">
         <h3 className="margin-b-sm flex-center">My Wishlist</h3>
-        <div className="flex-row flex-wrap gap-xl">
+        <div className="wishlist-cards">
         {wishlist.length !== 0 ? (
           wishlist.map((product) => (
             <WishlistCard product={product} key={product.id} />
