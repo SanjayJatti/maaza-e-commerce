@@ -24,3 +24,8 @@
     color: var(--danger-color);
     margin: auto;
 }
+@media only screen and (max-width:480px){
+    .form-container{
+        box-shadow: none;
+    }
+}

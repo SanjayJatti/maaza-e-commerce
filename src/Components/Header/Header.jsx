@@ -60,7 +60,7 @@ export const Header = () => {
           {!token ? (
             <li className="nav-item">
               <Link to="/login" className="nav-link">
-                <p>LogIn</p>
+               LogIn
               </Link>
             </li>
           ) : (

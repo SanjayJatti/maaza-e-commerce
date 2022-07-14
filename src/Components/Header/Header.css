@@ -39,7 +39,7 @@
         flex-direction: column;
         justify-content: flex-start;
         gap: var(--scale-xs);
-        height: 11vh;
+        height: 12vh;
         padding: var(--scale-xs);
     }
     .navbar-main{
@@ -55,7 +55,7 @@
 
 @media only screen and (max-width:480px){
     .navbar-container{
-        height: 14vh;
+        height: 15vh;
     }
     .navbar-main{
         flex-direction: column;

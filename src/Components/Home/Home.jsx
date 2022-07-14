@@ -41,7 +41,7 @@ export const Home = () => {
               src="/Assets/brand2.jpg"
               alt="Analog Watch"
             />
-            <h3 className="flex-center">Analog Watch</h3>
+            <h3 className="flex-center text-secondary">Analog Watch</h3>
           </Link>
           <Link
             to="/products"
@@ -58,7 +58,7 @@ export const Home = () => {
               src="./Assets/digital-01.jpg"
               alt="Digital Watch"
             />
-            <h3 className="flex-center">Digital Watch</h3>
+            <h3 className="flex-center text-secondary">Digital Watch</h3>
           </Link>
           <Link
             to="/products"
@@ -75,7 +75,7 @@ export const Home = () => {
               src="/Assets/analog-digital-01.jpg"
               alt="Analog-Digital Watch"
             />
-            <h3 className="flex-center">Analog-Digital Watch</h3>
+            <h3 className="flex-center text-secondary">Analog-Digital Watch</h3>
           </Link>
         </div>
       </div>
