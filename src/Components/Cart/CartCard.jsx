@@ -58,9 +58,9 @@ const CartCard = ({ product }) => {
             onClick={() => increaseCartItem(product._id, setCart, token)}
           >
             +
-          </button>{" "}
+          </button>
         </div>
-        <div className="flex-column gap-xs">
+        <div className="flex-column gap-xs btn-wrapper">
           <button
             id="btn-md"
             className="btn btn-outline-secondary"

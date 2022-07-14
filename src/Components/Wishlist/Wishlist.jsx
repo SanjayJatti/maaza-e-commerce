@@ -7,7 +7,7 @@ import { useWishlist } from "../../Context/WishlistContext.jsx";
 const Wishlist = () => {
   const { wishlist } = useWishlist();
   return (
-    <div>
+    <div className="wishlist-page">
       <Header />
       <div className="wishlist-wrapper">
         <h3 className="margin-b-sm flex-center">My Wishlist</h3>

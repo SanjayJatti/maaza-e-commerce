@@ -3,7 +3,7 @@
     top: 8vh;
     left: 0;
     width: 17vw;
-    min-height: 88vh;
+    min-height: 85vh;
     border-right: 1px solid var(--light-secondary-color);
     padding: var(--scale-lg);
     background: var(--off-white);

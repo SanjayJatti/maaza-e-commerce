@@ -55,11 +55,17 @@
 @media only screen and (max-width: 520px) {
     .card-horizontal{
         flex-direction: column;
-        width: 20rem;
+        width: 25rem;
+    }
+    .img-square{
+        width: 25rem;
     }
     .price-details{
         width: 28rem;
         margin-top: var(--scale-md)
+    }
+    .btn-wrapper{
+        gap: var(--scale-sm)
     }
 
 }

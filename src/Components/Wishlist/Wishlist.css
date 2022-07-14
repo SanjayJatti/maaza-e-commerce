@@ -2,8 +2,9 @@
     position: absolute;
     top: 9vh;
     padding: var(--scale-xl);
-    margin: 0 var(--scale-lg);
-    width:92vw
+    width: 95vw;
+    overflow-x: hidden;
+    margin: auto;
 }
 .wishlist-cards{
     display: flex;
@@ -13,6 +14,9 @@
 @media only screen and (max-width:580px){
     .wishlist-wrapper{
         top: 12vh;
+        margin: 0;
+        width: 85vw;
+        margin-top: var(--scale-sm);
     }
     .wishlist-cards{
         justify-content: center;
