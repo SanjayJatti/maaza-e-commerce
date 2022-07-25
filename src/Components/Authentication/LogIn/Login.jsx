@@ -91,7 +91,7 @@ const Login = () => {
           <button
             className="btn btn-secondary"
             onClick={(e) =>
-              logInHandler(e, "adarshbalika@gmail.com", "adarshBalika123")
+              logInHandler(e, "sanjayjatti@gmail.com", "sanjay123")
             }
           >
             Guest LogIn
