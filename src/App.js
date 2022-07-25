@@ -1,12 +1,20 @@
-import "./App.css";
 import { PageRoutes } from "./Routes/PageRoutes";
+import { Toaster } from "react-hot-toast";
+import "./App.css";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <PageRoutes/>
+      <PageRoutes />
+      <Toaster
+        toastOptions={{
+          style: {
+            fontSize: "2.5rem",
+          },
+        }}
+      />
     </div>
   );
-}
+};
 
 export default App;

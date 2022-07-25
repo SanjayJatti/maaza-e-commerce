@@ -5,3 +5,4 @@ export { ProductsPage } from "./ProductsPage/ProductsPage";
 export { SingleProduct } from "./SingleProductPage/SingleProduct";
 export { Wishlist } from "./Wishlist/Wishlist";
 export { Cart } from "./Cart/Cart";
+export { NoMatch } from "./NoMatch/NoMatch"

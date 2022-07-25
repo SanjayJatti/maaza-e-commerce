@@ -30,7 +30,7 @@ const CartCard = ({ product }) => {
           {product.categoryName}{" "}
           <span className="text-center">
             {product.rating}
-            <i class="fas fa-star checked"></i>
+            <i className="fas fa-star checked"></i>
           </span>
         </p>
         <div className="flex-row gap-xs">
@@ -66,7 +66,6 @@ const CartCard = ({ product }) => {
             className="btn btn-outline-secondary"
             onClick={() => deleteCartItemHandler(product._id, setCart, token)}
           >
-            {" "}
             Remove
           </button>
           <button
