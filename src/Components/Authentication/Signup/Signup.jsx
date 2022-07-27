@@ -5,8 +5,6 @@ import { Header } from "../../Header/Header";
 import { useAuth } from "../../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import toast from "react-hot-toast";
-import { toastStyle } from "../../toastStyle";
 
 const Signup = () => {
   const { authState, authDispatch } = useAuth();
@@ -31,9 +29,12 @@ const Signup = () => {
         payload: response.data.encodedToken,
       });
       navigator("/logIn");
-      toast.success("Successfully signed up",toastStyle)
     } catch (error) {
-      toast.error("Failed to sign up", toastStyle)
+      console.log(error);
+      authDispatch({
+        type: "AUTH_ERROR",
+        payload: "Sign up failed",
+      });
     }
   };
 

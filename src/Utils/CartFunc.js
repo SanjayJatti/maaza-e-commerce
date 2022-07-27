@@ -1,6 +1,5 @@
 import axios from "axios";
-import toast from "react-hot-toast";
-import { toastStyle } from "../Components/toastStyle";
+
 const addToCartHandler = async (product, setCart, token) => {
   try {
     const response = await axios.post(
@@ -15,9 +14,8 @@ const addToCartHandler = async (product, setCart, token) => {
       }
     );
     setCart(response.data.cart);
-    toast.success("Product added to cart", toastStyle);
   } catch (error) {
-    toast.error("Failed to add item to Cart", toastStyle);
+    console.log(error);
   }
 };
 
@@ -29,9 +27,8 @@ const deleteCartItemHandler = async (id, setCart, token) => {
       },
     });
     setCart(response.data.cart);
-    toast.error("Product removed from cart", toastStyle);
   } catch (error) {
-    toast.error("Failed to remove item from Cart", toastStyle);
+    console.log(error);
   }
 };
 
@@ -51,9 +48,8 @@ const increaseCartItem = async (id, setCart, token) => {
       }
     );
     setCart(response.data.cart);
-    toast.success("Product incremented by 1", toastStyle);
   } catch (error) {
-    toast.error("Failed to increment", toastStyle);
+    console.log(error);
   }
 };
 
@@ -73,9 +69,8 @@ const decreaseCartItem = async (id, setCart, token) => {
       }
     );
     setCart(response.data.cart);
-    toast.success("Product decremented by 1", toastStyle);
   } catch (error) {
-    toast.error("Failed to decrement", toastStyle);
+    console.log(error);
   }
 };
 
