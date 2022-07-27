@@ -4,9 +4,6 @@ import { Header } from "../../Header/Header";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../Context/AuthContext";
 import axios from "axios";
-import toast from "react-hot-toast";
-import { toastStyle } from "../../toastStyle";
-
 
 const Login = () => {
   const { authState, authDispatch } = useAuth();
@@ -22,14 +19,18 @@ const Login = () => {
         password: passwordId,
       });
       localStorage.setItem("token", response.data.encodedToken);
+
       authDispatch({
         type: "AUTH_TOKEN",
         payload: response.data.encodedToken,
       });
       navigator("/");
-      toast.success("Successfully logged in", toastStyle)
     } catch (error) {
-      toast.error("Failed to log in", toastStyle)
+      console.log(error);
+      authDispatch({
+        type: "AUTH_ERROR",
+        payload: "Invalid email or password",
+      });
     }
   };
 

@@ -27,6 +27,8 @@ const AuthReducer = (state, action) => {
       };
     case "IS_USER_LOGGED_IN":
       return { ...state, userInfo: {...state.userInfo, isUserLoggedIn : !state.userInfo.isUserLoggedIn}};
+    case "AUTH_ERROR":
+      return { ...state, error: action.payload };
     case "AUTH_TOKEN":
       return { ...state, token: action.payload };
     default:

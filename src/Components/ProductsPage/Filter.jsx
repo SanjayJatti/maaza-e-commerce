@@ -24,12 +24,7 @@ export const Filter = () => {
     <div className="filter-wrapper flex-column">
       <div className="filter-title">
         <h4>Filters</h4>
-        <h4
-          className="text-primary cursor-pointer"
-          onClick={() => dispatch({ type: "CLEAR_ALL" })}
-        >
-          Clear
-        </h4>
+        <h4 className="text-primary" onClick={() => dispatch({ type: "CLEAR_ALL" })}>Clear</h4>
       </div>
       <div>
         <div className="flex-column gap-xs">
@@ -39,28 +34,28 @@ export const Filter = () => {
               id="FILTER_BY_STOCK"
               name="FILTER_BY_STOCK"
               checked={inStock}
-              onChange={() => dispatch({ type: "FILTER_BY_STOCK" })}
+              onChange={() =>
+                dispatch({ type: "FILTER_BY_STOCK" })
+              }
             />
-            <label className="cursor-pointer" htmlFor="FILTER_BY_STOCK">
-              In Stock Only
-            </label>
+            <label htmlFor="FILTER_BY_STOCK">In Stock Only</label>
           </div>
         </div>
       </div>
       <div className="flex-column gap-xs margin-b-sm">
-        <div className="input-checkbox">
-          <input
-            type="checkbox"
-            id="FILTER_BY_DELIVERY"
-            name="FILTER_BY_DELIVERY"
-            checked={fastdelivery}
-            onChange={() => dispatch({ type: "FILTER_BY_DELIVERY" })}
-          />
-          <label className="cursor-pointer" htmlFor="FILTER_BY_DELIVERY">
-            Fast Delivery Only
-          </label>
-        </div>
-      </div>
+                <div className="input-checkbox">
+                  <input
+                    type="checkbox"
+                    id= "FILTER_BY_DELIVERY"
+                    name="FILTER_BY_DELIVERY"
+                    checked={fastdelivery}
+                    onChange={() =>
+                      dispatch({ type: "FILTER_BY_DELIVERY"})
+                    }
+                  />
+                  <label htmlFor="FILTER_BY_DELIVERY">Fast Delivery Only</label>
+                </div>
+              </div>
       <div className="margin-b-sm">
         <label htmlFor="price">Price Range : 0 to {priceRange}</label>
         <input
@@ -93,9 +88,7 @@ export const Filter = () => {
                     })
                   }
                 />
-                <label className="cursor-pointer" htmlFor={categoryType}>
-                  {categoryType}
-                </label>
+                <label htmlFor={categoryType}>{categoryType}</label>
               </div>
             </div>
           );
@@ -111,14 +104,12 @@ export const Filter = () => {
                   type="radio"
                   id={ratingValue}
                   name="ratings"
-                  checked={rating === ratingValue}
+                  checked={rating===ratingValue}
                   onChange={() =>
                     dispatch({ type: "FILTER_BY_RATING", payload: ratingValue })
                   }
                 />
-                <label className="cursor-pointer" htmlFor={ratingValue}>
-                  {ratingValue} star & above
-                </label>
+                <label htmlFor={ratingValue}>{ratingValue} star & above</label>
               </div>
             </div>
           );
@@ -136,49 +127,44 @@ export const Filter = () => {
                   name="brandnames"
                   checked={brandname.includes(brand.toLowerCase())}
                   onChange={() =>
-                    dispatch({
-                      type: "FILTER_BY_BRANDNAME",
-                      payload: brand.toLowerCase(),
-                    })
+                    dispatch({ type: "FILTER_BY_BRANDNAME", payload: brand.toLowerCase() })
                   }
                 />
-                <label className="cursor-pointer" htmlFor={brand}>
-                  {brand}
-                </label>
+                <label htmlFor={brand}>{brand}</label>
               </div>
             </div>
           );
         })}
       </div>
-      <h4>Sort by</h4>
-      <div className="flex-column gap-xs">
-        <div className="input-radio">
-          <input
-            type="radio"
-            id="PRICE_LOW_TO_HIGH"
-            name="sortBy"
-            checked={sortBy === "PRICE_LOW_TO_HIGH"}
-            onChange={() =>
-              dispatch({ type: "SORT_BY", payload: "PRICE_LOW_TO_HIGH" })
-            }
-          />
-          <label className="cursor-pointer" htmlFor="PRICE_LOW_TO_HIGH">Price: Low-to-High</label>
+        <h4>Sort by</h4>
+        <div className="flex-column gap-xs">
+          <div className="input-radio">
+            <input
+              type="radio"
+              id="PRICE_LOW_TO_HIGH"
+              name="sortBy"
+              checked={sortBy === "PRICE_LOW_TO_HIGH"}
+              onChange={() =>
+                dispatch({ type: "SORT_BY", payload: "PRICE_LOW_TO_HIGH" })
+              }
+            />
+            <label htmlFor="PRICE_LOW_TO_HIGH">Price: Low-to-High</label>
+          </div>
+        </div>
+        <div className="flex-column gap-xs">
+          <div className="input-radio">
+            <input
+              type="radio"
+              id="PRICE_HIGH_TO_LOW"
+              name="sortBy"
+              checked={sortBy === "PRICE_HIGH_TO_LOW"}
+              onChange={() =>
+                dispatch({ type: "SORT_BY", payload: "PRICE_HIGH_TO_LOW" })
+              }
+            />
+            <label htmlFor="PRICE_HIGH_TO_LOW">Price: High-to-Low</label>
+          </div>
         </div>
       </div>
-      <div className="flex-column gap-xs">
-        <div className="input-radio">
-          <input
-            type="radio"
-            id="PRICE_HIGH_TO_LOW"
-            name="sortBy"
-            checked={sortBy === "PRICE_HIGH_TO_LOW"}
-            onChange={() =>
-              dispatch({ type: "SORT_BY", payload: "PRICE_HIGH_TO_LOW" })
-            }
-          />
-          <label className="cursor-pointer" htmlFor="PRICE_HIGH_TO_LOW">Price: High-to-Low</label>
-        </div>
-      </div>
-    </div>
   );
 };
