@@ -4,6 +4,8 @@ import { useFilters } from "../../Context/FilterContext";
 import { useAuth } from "../../Context/AuthContext";
 import { useWishlist } from "../../Context/WishlistContext";
 import { useCart } from "../../Context/CartContext";
+import toast from "react-hot-toast";
+import { toastStyle } from "../toastStyle";
 
 export const Header = () => {
   const { dispatch } = useFilters();
@@ -20,6 +22,7 @@ export const Header = () => {
       payload: null,
     });
     navigator("/");
+    toast.success("Logged out", toastStyle)
   };
 
   return (
