@@ -1,5 +1,5 @@
 const toastStyle = {
-    duration: 1500,
+    duration: 2000,
     position: "top-right",
 };
 export { toastStyle }
