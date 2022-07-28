@@ -70,14 +70,14 @@ export const ProductCard = ({ product }) => {
       </div>
       {wishlist.find((item) => item._id === product._id) ? (
         <div
-          className="btn-absolute"
+          className="btn-absolute cursor-pointer"
           onClick={() => deleteWishlistHandler(product._id, setWishlist, token)}
         >
           <i className="fas fa-heart fa-2x text-danger"></i>
         </div>
       ) : (
         <div
-          className="btn-absolute"
+          className="btn-absolute cursor-pointer"
           onClick={() =>
             token
               ? addWishlistHandler(product, setWishlist, token)
