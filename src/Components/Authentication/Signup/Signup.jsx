@@ -5,6 +5,9 @@ import { Header } from "../../Header/Header";
 import { useAuth } from "../../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import  toast from "react-hot-toast";
+import { ToastStyle } from "../../ToastStyle/ToastStyle";
+import { AUTH_TOKEN, USER_EMAIL, USER_FIRST_NAME, USER_LAST_NAME, USER_PASSWORD, USER_PASSWORD_CONFIRM } from "../../../Constants/AuthConstants";
 
 const Signup = () => {
   const { authState, authDispatch } = useAuth();
@@ -25,16 +28,13 @@ const Signup = () => {
       });
       localStorage.setItem("token", response.data.encodedToken);
       authDispatch({
-        type: "AUTH_TOKEN",
+        type: AUTH_TOKEN,
         payload: response.data.encodedToken,
       });
       navigator("/logIn");
+      toast.success("Signed up successfully", ToastStyle)
     } catch (error) {
-      console.log(error);
-      authDispatch({
-        type: "AUTH_ERROR",
-        payload: "Sign up failed",
-      });
+      toast.error("Failed to signup. Please fill valid info.", ToastStyle)
     }
   };
 
@@ -53,7 +53,7 @@ const Signup = () => {
               id="firstname"
               onChange={(e) =>
                 authDispatch({
-                  type: "USER_FIRST_NAME",
+                  type: USER_FIRST_NAME,
                   payload: e.target.value,
                 })
               }
@@ -68,7 +68,7 @@ const Signup = () => {
               id="lastname"
               onChange={(e) =>
                 authDispatch({
-                  type: "USER_LAST_NAME",
+                  type: USER_LAST_NAME,
                   payload: e.target.value,
                 })
               }
@@ -83,7 +83,7 @@ const Signup = () => {
               id="email"
               placeholder="example@xyz.com"
               onChange={(e) =>
-                authDispatch({ type: "USER_EMAIL", payload: e.target.value })
+                authDispatch({ type: USER_EMAIL, payload: e.target.value })
               }
             />
           </div>
@@ -95,7 +95,7 @@ const Signup = () => {
               name="password"
               id="password"
               onChange={(e) =>
-                authDispatch({ type: "USER_PASSWORD", payload: e.target.value })
+                authDispatch({ type: USER_PASSWORD, payload: e.target.value })
               }
             />
           </div>
@@ -108,7 +108,7 @@ const Signup = () => {
               id="password-confirm"
               onChange={(e) =>
                 authDispatch({
-                  type: "USER_PASSWORD_CONFIRM",
+                  type: USER_PASSWORD_CONFIRM,
                   payload: e.target.value,
                 })
               }
@@ -118,7 +118,7 @@ const Signup = () => {
             Create New Account
           </button>
           <p className="text-medium">
-            Have an account?{" "}
+            Have an account?
             <span>
               <Link to="/login" className="text-medium text-primary">
                 LogIn

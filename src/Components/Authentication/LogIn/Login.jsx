@@ -4,6 +4,9 @@ import { Header } from "../../Header/Header";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../Context/AuthContext";
 import axios from "axios";
+import  toast from "react-hot-toast";
+import { ToastStyle } from "../../ToastStyle/ToastStyle";
+import { AUTH_TOKEN, USER_EMAIL, USER_PASSWORD } from "../../../Constants/AuthConstants";
 
 const Login = () => {
   const { authState, authDispatch } = useAuth();
@@ -21,16 +24,13 @@ const Login = () => {
       localStorage.setItem("token", response.data.encodedToken);
 
       authDispatch({
-        type: "AUTH_TOKEN",
+        type: AUTH_TOKEN,
         payload: response.data.encodedToken,
       });
       navigator("/");
+      toast.success("Logged in successfully", ToastStyle)
     } catch (error) {
-      console.log(error);
-      authDispatch({
-        type: "AUTH_ERROR",
-        payload: "Invalid email or password",
-      });
+      toast.error("Failed to login. Please check email & password", ToastStyle)
     }
   };
 
@@ -52,7 +52,7 @@ const Login = () => {
               id="email"
               placeholder="example@xyz.com"
               onChange={(e) =>
-                authDispatch({ type: "USER_EMAIL", payload: e.target.value })
+                authDispatch({ type: USER_EMAIL, payload: e.target.value })
               }
             />
           </div>
@@ -64,26 +64,9 @@ const Login = () => {
               name="password"
               id="password"
               onChange={(e) =>
-                authDispatch({ type: "USER_PASSWORD", payload: e.target.value })
+                authDispatch({ type: USER_PASSWORD, payload: e.target.value })
               }
             />
-          </div>
-          <div className="forget-password flex-row">
-            <div className="input-checkbox">
-              <input
-                type="checkbox"
-                id="remember-me"
-                name="remember-me"
-                value="remember-me"
-              />
-              <label className="text-medium" htmlFor="remember-me">
-                Remember me
-              </label>
-            </div>
-            <Link to="/login" className="text-medium text-primary">
-              {" "}
-              Forget your password?
-            </Link>
           </div>
           <button type="submit" className="btn btn-primary">
             Log In

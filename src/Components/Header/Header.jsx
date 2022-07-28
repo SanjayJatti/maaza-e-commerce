@@ -4,6 +4,10 @@ import { useFilters } from "../../Context/FilterContext";
 import { useAuth } from "../../Context/AuthContext";
 import { useWishlist } from "../../Context/WishlistContext";
 import { useCart } from "../../Context/CartContext";
+import { AUTH_TOKEN } from "../../Constants/AuthConstants";
+import toast from "react-hot-toast";
+import { ToastStyle } from "../ToastStyle/ToastStyle";
+import { SEARCH } from "../../Constants/FilterConstants";
 
 export const Header = () => {
   const { dispatch } = useFilters();
@@ -16,10 +20,11 @@ export const Header = () => {
   const logOutHandler = () => {
     localStorage.removeItem("token");
     authDispatch({
-      type: "AUTH_TOKEN",
+      type: AUTH_TOKEN,
       payload: null,
     });
     navigator("/");
+    toast.success("Logged out", ToastStyle)
   };
 
   return (
@@ -44,7 +49,7 @@ export const Header = () => {
               placeholder="Type to search"
               onChange={(e) =>
                 dispatch({
-                  type: "SEARCH",
+                  type: SEARCH,
                   payload: e.target.value.toLowerCase(),
                 })
               }
@@ -60,7 +65,7 @@ export const Header = () => {
           {!token ? (
             <li className="nav-item">
               <Link to="/login" className="nav-link">
-               LogIn
+               Login
               </Link>
             </li>
           ) : (

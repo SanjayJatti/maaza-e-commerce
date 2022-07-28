@@ -1,6 +1,7 @@
 import React from "react";
 import "./CSS/Filter.css";
 import { useFilters } from "../../Context/FilterContext";
+import { FILTER_BY_BRANDNAME, FILTER_BY_CATEGORY, FILTER_BY_DELIVERY, FILTER_BY_PRICE_RANGE, FILTER_BY_RATING, FILTER_BY_STOCK, SORT_BY } from "../../Constants/FilterConstants";
 
 const Categories = ["Analog", "Digital", "Analog-Digital"];
 
@@ -24,7 +25,7 @@ export const Filter = () => {
     <div className="filter-wrapper flex-column">
       <div className="filter-title">
         <h4>Filters</h4>
-        <h4 className="text-primary" onClick={() => dispatch({ type: "CLEAR_ALL" })}>Clear</h4>
+        <h4 className="text-primary cursor-pointer" onClick={() => dispatch({ type: "CLEAR_ALL" })}>Clear</h4>
       </div>
       <div>
         <div className="flex-column gap-xs">
@@ -35,10 +36,10 @@ export const Filter = () => {
               name="FILTER_BY_STOCK"
               checked={inStock}
               onChange={() =>
-                dispatch({ type: "FILTER_BY_STOCK" })
+                dispatch({ type: FILTER_BY_STOCK })
               }
             />
-            <label htmlFor="FILTER_BY_STOCK">In Stock Only</label>
+            <label className="cursor-pointer" htmlFor="FILTER_BY_STOCK">In Stock Only</label>
           </div>
         </div>
       </div>
@@ -50,14 +51,14 @@ export const Filter = () => {
                     name="FILTER_BY_DELIVERY"
                     checked={fastdelivery}
                     onChange={() =>
-                      dispatch({ type: "FILTER_BY_DELIVERY"})
+                      dispatch({ type: FILTER_BY_DELIVERY})
                     }
                   />
                   <label htmlFor="FILTER_BY_DELIVERY">Fast Delivery Only</label>
                 </div>
               </div>
       <div className="margin-b-sm">
-        <label htmlFor="price">Price Range : 0 to {priceRange}</label>
+        <label className="cursor-pointer" htmlFor="price">Price Range : 0 to {priceRange}</label>
         <input
           className="slider"
           type="range"
@@ -66,7 +67,7 @@ export const Filter = () => {
           step="2000"
           value={priceRange}
           onChange={(e) =>
-            dispatch({ type: "FILTER_BY_PRICE_RANGE", payload: e.target.value })
+            dispatch({ type: FILTER_BY_PRICE_RANGE, payload: e.target.value })
           }
         />
       </div>
@@ -83,12 +84,12 @@ export const Filter = () => {
                   checked={category.includes(categoryType.toLowerCase())}
                   onChange={() =>
                     dispatch({
-                      type: "FILTER_BY_CATEGORY",
+                      type: FILTER_BY_CATEGORY,
                       payload: categoryType.toLowerCase(),
                     })
                   }
                 />
-                <label htmlFor={categoryType}>{categoryType}</label>
+                <label className="cursor-pointer" htmlFor={categoryType}>{categoryType}</label>
               </div>
             </div>
           );
@@ -106,10 +107,10 @@ export const Filter = () => {
                   name="ratings"
                   checked={rating===ratingValue}
                   onChange={() =>
-                    dispatch({ type: "FILTER_BY_RATING", payload: ratingValue })
+                    dispatch({ type: FILTER_BY_RATING, payload: ratingValue })
                   }
                 />
-                <label htmlFor={ratingValue}>{ratingValue} star & above</label>
+                <label className="cursor-pointer" htmlFor={ratingValue}>{ratingValue} star & above</label>
               </div>
             </div>
           );
@@ -127,10 +128,10 @@ export const Filter = () => {
                   name="brandnames"
                   checked={brandname.includes(brand.toLowerCase())}
                   onChange={() =>
-                    dispatch({ type: "FILTER_BY_BRANDNAME", payload: brand.toLowerCase() })
+                    dispatch({ type: FILTER_BY_BRANDNAME, payload: brand.toLowerCase() })
                   }
                 />
-                <label htmlFor={brand}>{brand}</label>
+                <label className="cursor-pointer" htmlFor={brand}>{brand}</label>
               </div>
             </div>
           );
@@ -145,10 +146,10 @@ export const Filter = () => {
               name="sortBy"
               checked={sortBy === "PRICE_LOW_TO_HIGH"}
               onChange={() =>
-                dispatch({ type: "SORT_BY", payload: "PRICE_LOW_TO_HIGH" })
+                dispatch({ type: SORT_BY, payload: "PRICE_LOW_TO_HIGH" })
               }
             />
-            <label htmlFor="PRICE_LOW_TO_HIGH">Price: Low-to-High</label>
+            <label className="cursor-pointer" htmlFor="PRICE_LOW_TO_HIGH">Price: Low-to-High</label>
           </div>
         </div>
         <div className="flex-column gap-xs">
@@ -159,10 +160,10 @@ export const Filter = () => {
               name="sortBy"
               checked={sortBy === "PRICE_HIGH_TO_LOW"}
               onChange={() =>
-                dispatch({ type: "SORT_BY", payload: "PRICE_HIGH_TO_LOW" })
+                dispatch({ type: SORT_BY, payload: "PRICE_HIGH_TO_LOW" })
               }
             />
-            <label htmlFor="PRICE_HIGH_TO_LOW">Price: High-to-Low</label>
+            <label className="cursor-pointer" htmlFor="PRICE_HIGH_TO_LOW">Price: High-to-Low</label>
           </div>
         </div>
       </div>
