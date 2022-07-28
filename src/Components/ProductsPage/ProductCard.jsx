@@ -73,7 +73,7 @@ export const ProductCard = ({ product }) => {
           className="btn-absolute"
           onClick={() => deleteWishlistHandler(product._id, setWishlist, token)}
         >
-          <i className="fas fa-heart fa-2x text-danger cursor-pointer"></i>
+          <i className="fas fa-heart fa-2x text-danger"></i>
         </div>
       ) : (
         <div
@@ -84,7 +84,7 @@ export const ProductCard = ({ product }) => {
               : navigator("/login")
           }
         >
-          <i className="far fa-heart fa-2x cursor-pointer"></i>
+          <i className="far fa-heart fa-2x"></i>
         </div>
       )}
 
