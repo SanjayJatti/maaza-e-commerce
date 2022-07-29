@@ -2,12 +2,9 @@ import { createContext, useContext, useReducer } from "react";
 import { AuthReducer } from "../Reducer/AuthReducer.js";
 
 const authContext = createContext();
-
 const authToken = localStorage.getItem("token");
-const istoken = authToken ? true : false;
 
 const AuthProvider = ({ children }) => {
-
   const [authState, authDispatch] = useReducer(AuthReducer, {
     userInfo: {
       firstName: "",
@@ -16,10 +13,8 @@ const AuthProvider = ({ children }) => {
       password: "",
       confirmPassword: "",
     },
-    error: "",
     token: authToken,
   });
-
   return (
     <authContext.Provider
       value={{

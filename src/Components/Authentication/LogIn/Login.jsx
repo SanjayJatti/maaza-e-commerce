@@ -22,7 +22,6 @@ const Login = () => {
         password: passwordId,
       });
       localStorage.setItem("token", response.data.encodedToken);
-
       authDispatch({
         type: AUTH_TOKEN,
         payload: response.data.encodedToken,
@@ -85,7 +84,6 @@ const Login = () => {
               Create an account
             </Link>
           </p>
-          <h4 className="error-msg">{error}</h4>
         </form>
       </div>
     </div>

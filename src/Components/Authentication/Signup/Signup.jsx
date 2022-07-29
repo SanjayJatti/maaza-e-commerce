@@ -125,7 +125,6 @@ const Signup = () => {
               </Link>
             </span>
           </p>
-          <h4 className="error-msg">{error}</h4>
         </form>
       </div>
     </div>

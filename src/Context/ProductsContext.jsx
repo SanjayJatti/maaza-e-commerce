@@ -6,9 +6,7 @@ const productsContext = createContext();
 
 const ProductsProvider = ({ children }) => {
   const [productsState, productsDispatch] = useReducer(ProductsReducer, {
-    products: [],
-    error: "",
-    loading: false,
+    products: []
   });
 
   useEffect(() => {

@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { useAuth } from "./AuthContext";
 import axios from "axios";
+import toast from "react-hot-toast"
 
 const wishlistContext = createContext();
 
@@ -11,7 +12,6 @@ const WishlistProvider = ({ children }) => {
 
   useEffect(() => {
     const getWishlist = async () => {
-      if (userInfo.isUserLoggedIn) {
         try {
           const response = await axios.get("/api/user/wishlist", {
             headers: {
@@ -20,11 +20,8 @@ const WishlistProvider = ({ children }) => {
           });
           setWishlist(response.data.wishlist);
         } catch (error) {
-          console.log(error);
+          toast.error("Failed to load wishlist items", ToastStyle);
         }
-      } else {
-        setWishlist([]);
-      }
     };
     getWishlist();
   }, [token]);

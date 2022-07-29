@@ -3,7 +3,6 @@ import { USER_FIRST_NAME,
   USER_EMAIL,
   USER_PASSWORD,
   USER_PASSWORD_CONFIRM,
-  IS_USER_LOGGED_IN,
   AUTH_TOKEN} from "../Constants/AuthConstants"
 
 const AuthReducer = (state, action) => {
@@ -33,8 +32,6 @@ const AuthReducer = (state, action) => {
         ...state,
         userInfo: { ...state.userInfo, confirmPassword: action.payload },
       };
-    case IS_USER_LOGGED_IN:
-      return { ...state, userInfo: {...state.userInfo, isUserLoggedIn : !state.userInfo.isUserLoggedIn}};
     case AUTH_TOKEN:
       return { ...state, token: action.payload };
     default:
