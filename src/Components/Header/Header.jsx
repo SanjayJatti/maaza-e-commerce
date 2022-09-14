@@ -1,5 +1,5 @@
 import "../Header/Header.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useFilters } from "../../Context/FilterContext";
 import { useAuth } from "../../Context/AuthContext";
 import { useWishlist } from "../../Context/WishlistContext";
@@ -16,7 +16,7 @@ export const Header = () => {
   const { wishlist } = useWishlist();
   const { cart } = useCart();
   const navigator = useNavigate();
-
+  const { pathname } = useLocation()
   const logOutHandler = () => {
     localStorage.removeItem("token");
     authDispatch({
@@ -40,7 +40,7 @@ export const Header = () => {
             </Link>
           </div>
         </div>
-        <div className="search-box-container flex-center margin-r-md">
+        {pathname !== "/" && <div className="search-box-container flex-center margin-r-md">
           <div className="search-box flex-center">
             <input
               className="search-txt"
@@ -58,7 +58,8 @@ export const Header = () => {
               <i className="fas fa-search"></i>
             </div>
           </div>
-        </div>
+        </div>}
+        
       </div>
       <div>
         <ul className="flex-center margin-x-xl gap-sm">
